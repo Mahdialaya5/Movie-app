@@ -1,24 +1,25 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
-import Head from "next/head";
-
-
-const inter = Inter({ subsets: ["latin"] });
+import { Roboto } from 'next/font/google'
+ 
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['cyrillic'],
+})
 
 export const metadata = {
   title: "movieApp",
   description: "movieApp",
+  icons: {
+    icon: "/icon.png"
+  }
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-          <Head>
-           <link rel="icon"    href="/favicon.png" />
-      </Head>
-      <body  className={inter.className} >
-
-    {  children }
+      
+      <body  className={roboto.className} >
+    {children}
       </body>
     </html>
   );

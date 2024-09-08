@@ -2,6 +2,8 @@
   height: 80px;
   background-color: #6482AD;
   width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .btn{
@@ -10,7 +12,7 @@
   width: 8%;
   color: white;
   position: absolute;
-  left: 44%;
+
   top:1%;
  border-radius: 2%;
  border: none;
@@ -23,7 +25,9 @@
   gap:5px;
   margin: 2%;
 }
-
+.loading{
+  height: 480px;
+}
 .footer{
   background-color: black;
   color: white;

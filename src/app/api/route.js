@@ -1,11 +1,11 @@
 import { MongoClient } from 'mongodb';
-import {  NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 const uri = process.env.MONGODB_URI;
-const options = {};
+const clientPromise = new MongoClient(uri).connect();
 
-const clientPromise = new MongoClient(uri, options).connect();
 
+//addmovie
 export async function POST(req) {
   try {
 
@@ -13,25 +13,29 @@ export async function POST(req) {
     const db = client.db('movieapp');
 
     const { title, description,url } = await req.json();
-
+      
     const result = await db.collection('movies').insertOne({ title, description,url });
-    return NextResponse.json({ message: 'Movie added ' });
+    return NextResponse.json({ msg: 'Movie added ' },{status:201});
     
   } catch (error) {
      return NextResponse.json({ error: error.message });
   }
 }
 
+//getmovies
 export async function GET() {
+  
   try {
     
     const client = await clientPromise;
     const db = client.db('movieapp');
- const moviesCursor = await db.collection('movies').find().toArray();
+    const movieList = await db.collection('movies').find().toArray();
 
-    return NextResponse.json({ movies: moviesCursor });
+    return NextResponse.json({ movies: movieList },{status:200});
   } catch (error) {
     
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error.message },{ status: 500 });
   }
 }
+
+
