@@ -10,7 +10,7 @@ export default function Home() {
   const [data, setData] = useState();
   const token = document.cookie.split("=")[1];
   useEffect(() => {
-    console.log(document.cookie);
+   
     axios
       .get("http://localhost:3000/api")
       .then((response) => setData(response.data.movies))

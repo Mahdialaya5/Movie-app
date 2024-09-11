@@ -5,9 +5,9 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
+import UserRoute from "@/components/PrivateRoute";
 
 function Editmovie() {
-
   const [EditTitle, setTitle] = useState("");
   const [EditDescription, setDescription] = useState("");
   const router = useRouter();
@@ -28,7 +28,8 @@ function Editmovie() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.patch(`http://localhost:3000/api/${id}`,{
+    axios
+      .patch(`http://localhost:3000/api/${id}`, {
         title: EditTitle,
         description: EditDescription,
       })
@@ -38,21 +39,22 @@ function Editmovie() {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <h2 className={styles.title}>Edit Movie</h2>
-      <label>Title</label>
-      <input
-        value={EditTitle}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <label>Description</label>
-      <input
-        value={EditDescription}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <button className={styles.btn}>Save</button>
-      <Link href={"/"} className={styles.btn_return}>Return</Link>
-    </form>
+    <UserRoute>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h2 className={styles.title}>Edit Movie</h2>
+        <label>Title</label>
+        <input value={EditTitle} onChange={(e) => setTitle(e.target.value)} />
+        <label>Description</label>
+        <input
+          value={EditDescription}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <button className={styles.btn}>Save</button>
+        <Link href={"/"} className={styles.btn_return}>
+          Return
+        </Link>
+      </form>
+    </UserRoute>
   );
 }
 

@@ -4,13 +4,13 @@ import styles from "./add.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import UserRoute from "@/components/PrivateRoute";
 
 function addmovie() {
-
   const router = useRouter();
-  const [newtitle, setTitle] = useState("")
-  const [newdescription, setDescription] = useState("")
-  const [newurl, seturl] = useState("")
+  const [newtitle, setTitle] = useState("");
+  const [newdescription, setDescription] = useState("");
+  const [newurl, seturl] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,17 +26,21 @@ function addmovie() {
   };
 
   return (
-    <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
-      <h2 className={styles.title}>addMovie</h2>
-      <label>title:</label>
-      <input onChange={(e) => setTitle(e.target.value)} />
-      <label>description:</label>
-      <input onChange={(e) => setDescription(e.target.value)} />
-      <label>posteurl:</label>
-      <input onChange={(e) => seturl(e.target.value)} />
-      <button className={styles.btn}> save</button>
-      <Link href={"/"} className={styles.btn_return}> return </Link>
-    </form>
+    <UserRoute>
+      <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+        <h2 className={styles.title}>addMovie</h2>
+        <label>title:</label>
+        <input onChange={(e) => setTitle(e.target.value)} />
+        <label>description:</label>
+        <input onChange={(e) => setDescription(e.target.value)} />
+        <label>posteurl:</label>
+        <input onChange={(e) => seturl(e.target.value)} />
+        <button className={styles.btn}> save</button>
+        <Link href={"/"} className={styles.btn_return}>
+        return
+        </Link>
+      </form>
+    </UserRoute>
   );
 }
 

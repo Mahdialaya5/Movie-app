@@ -14,9 +14,10 @@ function Login() {
     axios.post("http://localhost:3000/api/user/login", {
        email, password
       },{ withCredentials: true })
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-    router.push("/profile");
+      .then((data) =>  router.push("/profile"))
+      .catch((err) => console.log(err))
+      
+   
   };
 
   return (
