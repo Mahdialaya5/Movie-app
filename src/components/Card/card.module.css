@@ -1,0 +1,25 @@
+
+.MovieCard{
+    width: 17rem;
+  height: 550px;
+  border-radius: 2%;
+  border: 2px solid grey; 
+
+ &:hover {
+    box-shadow: 4px 5px 5px 4px black;
+  }}
+
+.btn_edit{
+    width:max-content;
+    height: 25px;
+    background-color:blue;
+    border:none;
+    color:white;
+    cursor:pointer;
+    margin-left: 5%;
+}
+
+.P{
+  height:15%;
+   overflow:auto;
+}

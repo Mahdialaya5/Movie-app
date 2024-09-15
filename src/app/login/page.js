@@ -6,22 +6,19 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 function Login() {
+
   const router = useRouter();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    axios.post("http://localhost:3000/api/user/login", {
-       email, password
-      },{ withCredentials: true })
-      .then((data) =>  router.push("/profile"))
-      .catch((err) => console.log(err))
-      
-   
-  };
+    await axios.post("http://localhost:3000/api/user/login", { email, password })
+      router.push("/")
+    }
 
   return (
-    <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <h2 className={styles.title}>LOGIN</h2>
       <label>email:</label>
       <input onChange={(e) => setEmail(e.target.value)} />

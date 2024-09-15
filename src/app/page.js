@@ -1,22 +1,17 @@
-"use client";
 import styles from "./page.module.css";
 import "./globals.css";
 import Link from "next/link";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import Card from "@/components/Card/Card";
+import { cookies } from 'next/headers'
 
-export default function Home() {
-  const [data, setData] = useState();
-  const token = document.cookie.split("=")[1];
-  useEffect(() => {
-   
-    axios
-      .get("http://localhost:3000/api")
-      .then((response) => setData(response.data.movies))
-      .catch((error) => console.log(error));
-  }, []);
+export default async function Home() {
 
+  let res = await axios.get("http://localhost:3000/api/product/");
+
+  const cookieStore = cookies()
+  const token = cookieStore.get('token')?.value 
+     
   return (
     <>
       <nav className={styles.navbar}>
@@ -40,11 +35,7 @@ export default function Home() {
         }
       </nav>
       <main className={styles.main}>
-        {data ? (
-          data.map((el) => <Card data={el} key={el._id} />)
-        ) : (
-          <p className={styles.loading}>Loading...</p>
-        )}
+        {res.data.movies.map((el) => <Card data={el} key={el._id}  token={token}  />) }
       </main>
       <footer className={styles.footer}>
         <p>Copyright 2024</p>

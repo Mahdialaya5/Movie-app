@@ -9,10 +9,9 @@
 .btn{
   background-color: #cc5114;
   height: 40px;
-  width: 8%;
+  width: max-content;
   color: white;
   position: absolute;
-
   top:1%;
  border-radius: 2%;
  border: none;

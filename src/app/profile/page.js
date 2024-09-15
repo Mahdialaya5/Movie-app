@@ -12,19 +12,16 @@ function Profile() {
   const [user, setuser] = useState({});
 
   useEffect(() => {
-    if (token) {
-      axios
-        .get("http://localhost:3000/api/user/", {
+     axios.get("http://localhost:3000/api/user/currentuser", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => setuser(res.data.user))
         .catch((err) => console.log(err));
-    }
   }, []);
 
-  const logout = () => {
-    document.cookie = "token= ";
-    window.location.reload;
+  const logout = async() => {
+      await  axios.post("http://localhost:3000/api/user/deletecookie")
+     window.location.reload()
     router.push("/");
   };
 

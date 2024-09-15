@@ -11,7 +11,7 @@ function Register() {
   const [password, setPassword] = useState('')
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:3000/api/user/", {
+    axios.post("http://localhost:3000/api/user/register", {
        email, password
       })
       .then((data) => console.log(data))

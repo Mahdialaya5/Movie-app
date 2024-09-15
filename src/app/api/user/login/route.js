@@ -27,7 +27,7 @@ export async function POST(req) {
     const token = jwt.sign(payload, process.env.secretKey,{ expiresIn: '1h' })
  
     const response = NextResponse.json({ msg:'login succes' }, { status: 200 });
-        response.headers.set(
+      response.headers.set(
            'Set-Cookie',
            `token=${token}; Path=/;`
         )   

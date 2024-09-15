@@ -1,23 +1,26 @@
-import React from 'react'
-import { Button, MovieCard } from './style'
-import Image from 'next/image'
-import Link from 'next/link'
+import style from "./card.module.css";
+import Image from "next/image";
+import Link from "next/link";
 
-function Card({data}) {
+function Card({ data, token }) {
   return (
-    <MovieCard>
-   <Image  
-      src={data.url}
-      width={500} 
-      height={350}  
-       layout="responsive" 
-       alt="photo"
-/>  
-    <h1>{data.title}</h1>
- 
- <Link href={`/editmovie/${data._id}`}  >  <Button>edit</Button> </Link>  
-    </MovieCard>
-  )
+    <div className={style.MovieCard}>
+    <Image
+      layout="responsive"
+      priority
+     src={data.url}
+     width={260}
+     height={250}
+     alt="photo"
+    />
+
+      <h1     >{data.title}</h1>
+     {token ? 
+        <Link href={`/editmovie/${data._id}`}>
+        <button className={style.btn_edit}>edit</button>
+        </Link>: null}
+    </div>
+  );
 }
 
-export default Card
+export default Card;
