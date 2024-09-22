@@ -1,33 +1,43 @@
-"use client";
-import React, { useState } from "react";
-import styles from "./login.module.css";
-import Link from "next/link";
+"use client"; 
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import styles from './login.module.css'
+import { useState } from "react";
 
-function Login() {
+export default function SignInForm() {
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const router = useRouter();
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:3000/api/user/login", { email, password })
-      router.push("/")
-    }
+
+    const result = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
+    });
+  !result.error? router.push("/") :setError(result.error);
+  }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <h2 className={styles.title}>LOGIN</h2>
-      <label>email:</label>
-      <input onChange={(e) => setEmail(e.target.value)} />
-      <label>password:</label>
-      <input type="password"   onChange={(e) => setPassword(e.target.value)} />
-      <button   className={styles.btn}> save</button>
-      <Link href={"/"} className={styles.btn_return}> return</Link>
+    <form onSubmit={handleSubmit}  className={styles.form} >
+      <label>Email:</label>
+        <input
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        /> 
+        <label>Password:</label>
+        <input
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      {error && <p >{error}</p>}
+      <button type="submit" className={styles.btn}   >Sign In</button>
     </form>
   );
 }
-
-export default Login;

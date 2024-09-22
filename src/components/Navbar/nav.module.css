@@ -1,0 +1,19 @@
+.navbar{
+    height: 80px;
+    background-color: #6482AD;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .btn{
+    background-color: #cc5114;
+    height: 40px;
+    width: max-content;
+    color: white;
+    position: absolute;
+    top:1%;
+   border-radius: 2%;
+   border: none;
+   cursor: pointer;
+  }

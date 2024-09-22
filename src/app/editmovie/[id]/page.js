@@ -5,7 +5,7 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
-import UserRoute from "@/components/PrivateRoute";
+
 
 function Editmovie() {
   const [EditTitle, setTitle] = useState("");
@@ -39,7 +39,7 @@ function Editmovie() {
   };
 
   return (
-    <UserRoute>
+
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2 className={styles.title}>Edit Movie</h2>
         <label>Title</label>
@@ -54,7 +54,7 @@ function Editmovie() {
           Return
         </Link>
       </form>
-    </UserRoute>
+   
   );
 }
 

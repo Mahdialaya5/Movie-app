@@ -1,8 +1,9 @@
 import style from "./card.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import EditButton from "../Editbutton/EditButton";
 
-function Card({ data, token }) {
+function Card({ data}) {
   return (
     <div className={style.MovieCard}>
     <Image
@@ -13,12 +14,8 @@ function Card({ data, token }) {
      height={250}
      alt="photo"
     />
-
-      <h1     >{data.title}</h1>
-     {token ? 
-        <Link href={`/editmovie/${data._id}`}>
-        <button className={style.btn_edit}>edit</button>
-        </Link>: null}
+   <h1 >{data.title}</h1>
+     <EditButton  movie={data}  style={style.btn_edit} />
     </div>
   );
 }

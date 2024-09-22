@@ -1,48 +1,18 @@
-"use client";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import styles from "./profile.module.css";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import UserRoute from "@/components/PrivateRoute";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import Navbar from "@/components/Navbar/Navbar";
 
-function Profile() {
-  const router = useRouter();
-  const token = document.cookie.split("=")[1];
-  const [user, setuser] = useState({});
+  async function  Profile() {
 
-  useEffect(() => {
-     axios.get("http://localhost:3000/api/user/currentuser", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((res) => setuser(res.data.user))
-        .catch((err) => console.log(err));
-  }, []);
 
-  const logout = async() => {
-      await  axios.post("http://localhost:3000/api/user/deletecookie")
-     window.location.reload()
-    router.push("/");
-  };
-
+    const session= await getServerSession(authOptions)
+  
   return (
-    <UserRoute>
-      <nav className={styles.navbar}>
-        <div className={styles.nav}>
-          <Link href={"/addmovie"}>
-            <button className={styles.btn}>Add movie</button>
-          </Link>
-
-          <Link href={"/"}>
-            <button className={styles.btn}>Home</button>
-          </Link>
-        </div>
-        <button className={styles.btn_logout} onClick={logout}>
-          Logout
-        </button>
-      </nav>
-      <p>email:{user.email}</p>
-    </UserRoute>
+  <>
+      <Navbar/>
+     {session ? <p>Email : {session.user.email}</p> : null } 
+      </>
   );
 }
 

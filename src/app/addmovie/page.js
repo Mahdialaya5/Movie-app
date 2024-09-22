@@ -4,7 +4,7 @@ import styles from "./add.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import UserRoute from "@/components/PrivateRoute";
+
 
 function addmovie() {
   const router = useRouter();
@@ -26,7 +26,7 @@ function addmovie() {
   };
 
   return (
-    <UserRoute>
+ 
       <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <h2 className={styles.title}>addMovie</h2>
         <label>title:</label>
@@ -40,7 +40,7 @@ function addmovie() {
         return
         </Link>
       </form>
-    </UserRoute>
+  
   );
 }
 

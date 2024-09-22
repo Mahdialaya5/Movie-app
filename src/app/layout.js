@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Inter} from 'next/font/google'
- 
 const inter = Inter({ subsets: ["latin"] });
+import AuthProvider from '../components/AuthProvider'
 
 export const metadata = {
   title: "movieApp",
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       
       <body  className={inter.className} >
-    {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );
