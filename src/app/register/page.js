@@ -1,32 +1,50 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from "./register.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
 function Register() {
+  
   const router = useRouter();
   const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setErr] = useState('')
+  const {data, status}= useSession()
+
+  useEffect(() => {
+    if (data) {
+      router.push('/'); 
+    }})
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     axios.post("http://localhost:3000/api/user/register", {
-       email, password
+       email,password,name
       })
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-    router.push("/login");
+      .then((data) => router.push("/login"))
+      .catch((err) => {  setErr(err.response)
+        return Promise.reject(error);
+      });
+
   };
+  
 
   return (
     <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
       <h2 className={styles.title}>REGISTER</h2>
       <label>email:</label>
-      <input onChange={(e) => setEmail(e.target.value)} />
+      <input onChange={(e) => setEmail(e.target.value)}  type='email' />
+      <label>username:</label>
+      <input onChange={(e) => setName(e.target.value)}   autoComplete="current-username"  />
       <label>password:</label>
-      <input type="password"  onChange={(e) => setPassword(e.target.value)} />
-      <button className={styles.btn}> save</button>
+      <input type="password"  onChange={(e)=>setPassword(e.target.value)}  autoComplete="current-password" />
+      {error ? <p  className={styles.err}  >{error.data.msg}</p>: null}
+      <button className={styles.btn}>register</button>
       <Link href={"/"} className={styles.btn_return}> return</Link>
     </form>
   );

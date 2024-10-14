@@ -1,8 +1,7 @@
-import { MongoClient } from 'mongodb';
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-const uri = process.env.MONGODB_URI;
 import bcrypt from 'bcrypt'
+import { clientPromise } from "@/lib/mongodb";
 
 
 export const authOptions = {
@@ -15,28 +14,30 @@ export const authOptions = {
       },
       async authorize(credentials) {
         try {
-          const clientPromise = new MongoClient(uri).connect();
           const client = await clientPromise;
           const db = client.db('movieapp');
 
-          // Find the user by email
+    
           const user = await db.collection('users').findOne({
             email: credentials.email,
           });
-     
+
           if (!user) {
-             return null
+            return null;
           }
+        const validPassword = await bcrypt.compare(credentials.password, user.password);
 
-          const ValidPassword = await bcrypt.compare(credentials.password, user.password);
-
-          if (!ValidPassword) {
-           
-            return null
+          if (!validPassword) {
+            return null;
           }
-        return { id: user._id.toString(), email: user.email };
+          return {
+            id: user._id.toString(), 
+            email: user.email,
+            name: user.name,
+            role:user.role
+          };
         } catch (error) {
-          console.error("Error in authorize:", error);
+          console.error( error);
           return null;
         }
       },
@@ -45,8 +46,26 @@ export const authOptions = {
   session: {
     strategy: "jwt",
   },
+  callbacks: {
+    
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id; 
+        token.role=user.role 
+      }
+      return token;
+    },
+    
+    async session({ session, token }) {
+      if (token?.id) {
+        session.user.id = token.id; 
+        session.user.role=token.role
+      }
+      return session;
+    },
+  },
   secret: process.env.NEXTAUTH_SECRET,
-}
+};
 
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

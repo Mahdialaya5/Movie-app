@@ -3,17 +3,33 @@
     background-color: #6482AD;
     width: 100%;
     display: flex;
+    justify-content: space-around;
+  }
+  .user_nav{
+    width:40%;
+    display: flex;
     justify-content: space-evenly;
   }
-  
   .btn{
     background-color: #cc5114;
     height: 40px;
     width: max-content;
     color: white;
-    position: absolute;
-    top:1%;
-   border-radius: 2%;
+    position: relative;
+    top:7px;
+   border-radius: 12%;
    border: none;
    cursor: pointer;
+  }
+  .nav_guest{
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .name{
+    font-size: x-large;
+    color: #DBD3D3;
+    position: relative;
+    right: 4%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }

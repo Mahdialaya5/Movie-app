@@ -1,7 +1,7 @@
 
 
 .form{
-    height: 300px;
+    min-height: 300px;
     width: 40%;
     background-color: #6482AD;
     margin: 5% 28%;
@@ -9,14 +9,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3%;
+    gap: 5px;
    
 }
 .btn{
    
     background-color: #cc5114;
     height: 25px;
-    width: 12%;
+    width: max-content;
+    padding: 0px 2%;
+    font-size: 0.9rem;
     color: white;
     border-radius: 2%;
    border: none;
@@ -27,9 +29,10 @@
 .btn_return {
     background-color: #cc5114;
     height: 25px;
-    width: 12%;
+    width:max-content;
+    padding: 0px 3px;
     color: white;
-    border-radius: 2%;
+    border-radius: 14%;
    border: none;
    cursor: pointer;
    margin-top: 4px;
@@ -39,4 +42,9 @@ text-align: center;
 }
 .title{
     margin: 0px;
+}
+.err{
+    color: rgb(157 8 8 / 93%);
+    font-weight:500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

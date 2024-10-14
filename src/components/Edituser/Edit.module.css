@@ -1,0 +1,43 @@
+.btn{
+    background-color: #cc5114;
+    height: 40px;
+    min-width: 50px;
+    width: max-content;
+    color: white;
+    margin-left: 14%;
+    margin-top: 20px;
+    border-radius: 11%;
+    border: none;
+    cursor: pointer;
+}
+.form{
+
+    display: inline-block;
+    width:20%;
+    height: max-content;
+    text-align: center;
+    border-radius: 2%;
+    background-color: beige;
+    margin-top: 5px;
+    margin-left: 10%;
+}
+.form_second{
+    display: inline-block;
+    width:25%;
+    text-align: center;
+    border-radius: 2%;
+    background-color: beige;
+    margin-top: 5px;
+    margin-left: 37%;
+}
+.submit{
+    background-color: #2d14e9;
+    height: 35px;
+    min-width: 50px;
+    width: max-content;
+    color: white;
+    margin: 2px 6px;
+    border-radius: 12%;
+    border: none;
+    cursor: pointer;
+}

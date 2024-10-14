@@ -10,16 +10,55 @@
   }}
 
 .btn_edit{
-    width:max-content;
-    height: 25px;
+    width:100%t;
+    height: 40px;
     background-color:blue;
     border:none;
     color:white;
     cursor:pointer;
     margin-left: 5%;
+    border-radius: 14%;
+}
+.btn_edit{
+  width:100%t;
+  height: 40px;
+  background-color:green;
+  border:none;
+  color:white;
+  cursor:pointer;
+  margin-left: 5%;
+  border-radius: 14%;
+}
+.btn_delete{
+  width:100%t;
+  height: 40px;
+  background-color:red;
+  border:none;
+  color:white;
+  cursor:pointer;
+  margin-left: 5%;
+  border-radius: 14%;
 }
 
 .P{
   height:15%;
    overflow:auto;
+}
+
+.btn_movie{
+  background-color: #cc5114;
+  height: 40px;
+  width: max-content;
+  color: white;
+  position: relative;
+  top:4px;
+  left:207%;
+ border-radius: 12%;
+ border: none;
+ cursor: pointer;
+}
+.btns{
+  display: flex;
+  position: relative;
+  top:4%
 }

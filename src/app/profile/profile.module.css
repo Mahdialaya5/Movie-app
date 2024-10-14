@@ -1,33 +1,6 @@
-.navbar{
-    height: 80px;
-    background-color: #6482AD;
-    width: 100%;
-    display: flex;
-    justify-content: space-around
-  }
-  .btn_logout{
-    background-color: #cc5114;
-    height: 40px;
-    width: max-content;
-    color: white;
-   top:1%;
-   border-radius: 2%;
-   border: none;
-   cursor: pointer;
-  }
-  .btn{
-    background-color: #cc5114;
-    height: 40px;
-    width: max-content;
-    color: white;
-  top:1%;
-   border-radius: 2%;
-   border: none;
-   cursor: pointer;
-  }
-  .nav{
-    display:flex;
-    justify-content: space-evenly;
-    width: 57%;
+.user{
+   margin-left: 3%;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+   font-size: 1 rem;
 
-  }
+}

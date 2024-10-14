@@ -1,33 +1,32 @@
-import { MongoClient } from 'mongodb';
+import { clientPromise } from '@/lib/mongodb';
+import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
-
-const uri = process.env.MONGODB_URI;
-const clientPromise = new MongoClient(uri).connect();
+import { authOptions } from '../auth/[...nextauth]/route';
 
 
-//addmovie
+
 export async function POST(req) {
   try {
-
     const client = await clientPromise;
     const db = client.db('movieapp');
-
-    const { title, description,url } = await req.json();
-      
-    const result = await db.collection('movies').insertOne({ title, description,url });
-    return NextResponse.json({ msg: 'Movie added ' },{status:201});
     
-  } catch (error) {
+    const session= await getServerSession(authOptions)
+
+      if (session.user.role!=='admin') {
+        return NextResponse.json({ msg:'unauthorized' },{status:401});
+      }
+   const  {title, description,url,src} = await req.json()  
+
+    const result = await db.collection('movies').insertOne({ title, description,url,src });
+    return NextResponse.json({ msg: 'Movie added ', result},{status:201});
+    
+  }
+   catch (error) {
      return NextResponse.json({ error: error.message });
   }
 }
 
 
-
-
-
-
-//getmovies
 export async function GET() {
   
   try {
