@@ -5,7 +5,7 @@ import Card from "@/components/Card/Card";
 import Navbar from "@/components/Navbar/Navbar";
 
 
-export const dynamic = 'force-dynamic';
+
 export default async function Home() {
 
   let res = await axios.get(`${process.env.Base_url}/api/movie/`);
