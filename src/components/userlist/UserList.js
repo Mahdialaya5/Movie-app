@@ -11,7 +11,7 @@ function Userlist() {
 
     useEffect(() => {
         axios
-        .get("http://localhost:3000/api/user/get")
+        .get("/api/user/get")
         .then((res) => setusers(res.data.users))
         .catch((err) =>alert(err.response.data.msg) );
 

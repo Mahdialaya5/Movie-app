@@ -18,7 +18,7 @@ function Edituser({user}) {
         if (newpassword.length<6) {
           return alert('password should be 6 charactares')
        }
-          axios.patch(`http://localhost:3000/api/user/edit/${user.id}`, {
+          axios.patch(`/api/user/edit/${user.id}`, {
               newpassword
             })
             .then(() =>  window.location.reload())

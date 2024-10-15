@@ -33,7 +33,7 @@ function Editmovie() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .patch(`http://localhost:3000/api/movie/${id}`, {
+      .patch(`/api/movie/${id}`, {
         title: EditTitle,
         description: EditDescription,
         url:Editurl,

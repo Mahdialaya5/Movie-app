@@ -23,7 +23,7 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    axios.post("http://localhost:3000/api/user/register", {
+    axios.post("/api/user/register", {
        email,password,name
       })
       .then((data) => router.push("/login"))
