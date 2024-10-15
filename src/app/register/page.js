@@ -23,7 +23,7 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    axios.post("/api/user/register", {
+    axios.post(`${process.env.Base_url}/api/user/register`, {
        email,password,name
       })
       .then((data) => router.push("/login"))

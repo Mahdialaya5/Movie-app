@@ -14,7 +14,7 @@ function Delete_button({ movie, style }) {
     const validator=confirm('you sure for delete')
      if (validator) {
         axios
-        .delete(`/api/movie/${movie._id}`)
+        .delete(`${process.env.Base_url}/api/movie/${movie._id}`)
         .then((res) => router.push('/'))
         .catch((err) => {
           setErr(err.response);

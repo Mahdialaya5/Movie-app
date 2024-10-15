@@ -17,7 +17,7 @@ function addmovie() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/api/movie", {
+      .post(`${process.env.Base_url}/api/movie`, {
         title: newtitle,
         description: newdescription,
         url: newurl,

@@ -8,7 +8,7 @@ export default async function Home({ params }) {
   const { id } = params
 
   try {
-    const response = await axios.get(`/api/movie/${id}`)
+    const response = await axios.get(`${process.env.Base_url}/api/movie/${id}`)
     var movie = response.data.movie
   
   } catch (error) {
