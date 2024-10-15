@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import { authOptions } from '../auth/[...nextauth]/route';
 
 
-
+//add movie
 export async function POST(req) {
   try {
     const client = await clientPromise;
