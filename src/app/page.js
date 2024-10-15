@@ -20,7 +20,7 @@ export default async function Home() {
         ))}
       </main>
       <footer className={styles.footer}>
-         <p> Mahdi <br/>	&copy;copyright</p>
+         <p> <span  className={styles.M}  >Mahdi</span><br/>	&copy;copyright</p>
       </footer>
     </>
   );

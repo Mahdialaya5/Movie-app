@@ -2,10 +2,12 @@
 import React, { useEffect, useState } from "react";
 import style from "./userlist.module.css";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
 function Userlist() {
 
   const [users, setusers] = useState([])
+  const {data, status}= useSession()
 
     useEffect(() => {
         axios
@@ -19,6 +21,10 @@ function Userlist() {
 
   return (
     <div className={style.container}>
+      {
+        status === 'loading' ? null : 
+        status === 'authenticated' ? 
+     <>
       <h2 className={style.title}>User List</h2>
       <table className={style.table}>
         <thead className={style.thead}>
@@ -32,9 +38,9 @@ function Userlist() {
             <td className={style.td}>{el.email}</td>
             <td className={style.td}>{el.name}</td>
           </tr>) }
-        
-        </tbody>
-      </table>
+      </tbody>
+      </table> 
+      </>:null }
     </div>
   );
 }
