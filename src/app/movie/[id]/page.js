@@ -8,7 +8,7 @@ export default async function Home({ params }) {
   const { id } = params
 
   try {
-    const response = await axios.get(`http://localhost:3000/api/movie/${id}`)
+    const response = await axios.get(`/api/movie/${id}`)
     var movie = response.data.movie
   
   } catch (error) {

@@ -18,7 +18,7 @@ function Editmovie() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/movie")
+      .get("/api/movie")
       .then((response) => {
         const obj = response.data.movies.find((el) => el._id === id);
         if (obj) {
