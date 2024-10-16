@@ -6,22 +6,24 @@ import Navbar from "@/components/Navbar/Navbar";
 
 
 export const dynamic = 'force-dynamic';
+
 export default async function Home() {
+    let movies=[]
    try {
-    var  res = await axios.get(`/api/movie/`)
+    const  res = await axios.get(`${process.env.Base_url}/api/movie/`)
+           movies = res.data.movies || [];
    } catch (error) {
-    return Promise.reject(error);
+    console.log(error);
    }
   
     
-     
     return (
     <>
       <Navbar/>
       <main className={styles.main}>
-        {res.data.movies.map((el) => (
+        {movies.length > 0 ? movies.map((el) => (
           <Card data={el} key={el._id}  />
-        ))}
+        )): <p>not movies found</p>}
       </main>
       <footer className={styles.footer}>
          <p> <span  className={styles.M}  >Mahdi</span><br/>	&copy;copyright</p>
