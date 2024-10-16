@@ -13,7 +13,7 @@ function Userlist() {
         axios
         .get(`${process.env.Base_url}/api/user/get`)
         .then((res) => setusers(res.data.users))
-        .catch((err) =>alert(err.response.data.msg) );
+        .catch((err) =>alert(err?.response.data.msg) );
 
     }, [])
     
