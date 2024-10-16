@@ -8,7 +8,7 @@ import Navbar from "@/components/Navbar/Navbar";
 export const dynamic = 'force-dynamic';
 export default async function Home() {
    try {
-    var  res = await axios.get(`${process.env.Base_url}/api/movie/`)
+    var  res = await axios.get(`/api/movie/`)
    } catch (error) {
     return Promise.reject(error);
    }
