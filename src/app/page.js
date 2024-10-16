@@ -10,7 +10,7 @@ export default async function Home() {
    try {
     var  res = await axios.get(`${process.env.Base_url}/api/movie/`)
    } catch (error) {
-    return new Promise(error)
+    return Promise.reject(error);
    }
   
     
