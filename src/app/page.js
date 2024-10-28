@@ -26,7 +26,7 @@ export default async function Home() {
         )): <p>not movies found</p>}
       </main>
       <footer className={styles.footer}>
-         <p> <span  className={styles.M}  >Mahdi</span><br/>	&copy;copyright</p>
+      <p>&copy; 2024 Mahdi. All rights reserved.</p>
       </footer>
     </>
   );
