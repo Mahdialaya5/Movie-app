@@ -38,7 +38,7 @@ function Navbar() {
         <Link href={path==='/' ? '/profile' : '/' }>
           <button className={styles.btn}>{path==='/' ? 'Profile' : 'Home' }</button>
         </Link>  
-        <button className={styles.btn} onClick={handleClick}>Signout</button>
+        <button className={styles.btn} onClick={handleClick}>Logout</button>
         </div>
          </>
         : <div  className={styles.nav_guest} >

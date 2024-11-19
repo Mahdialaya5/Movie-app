@@ -22,12 +22,13 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    axios.post(`${process.env.Base_url}/api/user/register`, {
+    console.log(process.env.NEXT_PUBLIC_BASEURL);
+    axios.post(`${process.env.NEXT_PUBLIC_BASEURL}/api/user/register`, {
        email,password,name
       })
       .then((data) => router.push("/login"))
-      .catch((err) => {  setErr(err.response)
+      .catch((err) => { setErr(err.response)
+  
         return Promise.reject(error);
       });
 

@@ -15,7 +15,7 @@ export default async function Home() {
    } catch (error) {
     console.log(error);
    }
-  
+
     
     return (
     <>

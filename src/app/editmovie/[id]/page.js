@@ -18,7 +18,7 @@ function Editmovie() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.Base_url}/api/movie`)
+      .get(`${process.env.NEXT_PUBLIC_BASEURL}/api/movie`)
       .then((response) => {
         const obj = response.data.movies.find((el) => el._id === id);
         if (obj) {
