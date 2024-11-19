@@ -13,7 +13,7 @@ export default async function Home() {
     const  res = await axios.get(`${process.env.Base_url}/api/movie/`)
            movies = res.data.movies || [];
    } catch (error) {
-    console.log(error);
+    return Promise.reject(error);
    }
 
     

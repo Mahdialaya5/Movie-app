@@ -22,7 +22,7 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(process.env.NEXT_PUBLIC_BASEURL);
+   
     axios.post(`${process.env.NEXT_PUBLIC_BASEURL}/api/user/register`, {
        email,password,name
       })
