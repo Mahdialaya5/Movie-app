@@ -9,6 +9,7 @@
     align-items: center;
     gap: 3%;
 }
+
 .btn{
    
     background-color: #cc5114;
@@ -54,4 +55,10 @@ text-align: center;
    text-decoration: none;
    padding: 1px 3px;
 text-align: center;
+}
+@media screen and (max-width: 550px) {
+    .form{
+        margin:  5px auto;
+        width:70%
+    }
 }
