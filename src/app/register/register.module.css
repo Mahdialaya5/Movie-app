@@ -3,6 +3,7 @@
 .form{
     min-height: 300px;
     width: 40%;
+    border-radius: 2%;
     background-color: #6482AD;
     margin: 5% 28%;
     display: flex;
