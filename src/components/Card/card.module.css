@@ -2,11 +2,12 @@
 .MovieCard{
     width: 17rem;
   height: 550px;
-  border-radius: 2%;
+  text-align: center;
+  border-radius: 1%;
   border: 2px solid grey; 
-
- &:hover {
-    box-shadow: 4px 5px 5px 4px black;
+  &:hover {
+  transform:  translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }}
 
 .btn_edit{
